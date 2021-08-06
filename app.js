@@ -3,8 +3,11 @@ const GameBoard = ( () => {
            ['','',''],
            ['','','']];
 
+  const setSquare = (x, y, mark) => {
+    board[x][y] = mark;
+  };
 
-  return {board,};
+  return {board, setSquare};
 })();
 
 const Player = (name, mark) => {
@@ -16,3 +19,4 @@ const Player = (name, mark) => {
   return {getMark, getName};
 
 };
+
