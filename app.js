@@ -1,10 +1,4 @@
-let docBoard = document.querySelectorAll('#sq');
 
-const renderBoard = () => {
-  docBoard.forEach( (square, i) => {
-    square.textContent = gameBoard.board[i];
-  });
-};
 
 
 const gameBoard = ( () => {
@@ -20,7 +14,15 @@ const gameBoard = ( () => {
     return [board[arr[0]], board[arr[1]], board[arr[2]] ];
   };
 
-  return {board, setSquare, getSquare, getLine};
+  const renderBoard = () => {
+    let docBoard = document.querySelectorAll('#sq');
+    docBoard.forEach( (square, i) => {
+      square.textContent = gameBoard.board[i];
+    });
+  };
+
+
+  return {board, setSquare, getSquare, getLine, renderBoard};
 })();
 
 const Player = (name, piece) => {
@@ -53,8 +55,6 @@ const gameController = ( () => {
 })();
 
 gameBoard.setSquare(0,'X');
-gameBoard.setSquare(1,'X');
-gameBoard.setSquare(2,'X');
 
-renderBoard();
+gameBoard.renderBoard();
 
