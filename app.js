@@ -1,5 +1,14 @@
+let docBoard = document.querySelectorAll('#sq');
+
+const renderBoard = () => {
+  docBoard.forEach( (square, i) => {
+    square.textContent = gameBoard.board[i];
+  });
+};
+
+
 const gameBoard = ( () => {
-  board = ['','','','','','','','',''];
+  let board = ['','','','','','','','',''];
 
   const setSquare = (pos, mark) => {
     board[pos] = mark;
@@ -42,4 +51,10 @@ const gameController = ( () => {
 
   return {checkWin};
 })();
+
+gameBoard.setSquare(0,'X');
+gameBoard.setSquare(1,'X');
+gameBoard.setSquare(2,'X');
+
+renderBoard();
 
