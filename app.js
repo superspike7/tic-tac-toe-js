@@ -47,10 +47,10 @@ const gameController = ( () => {
     };
   };
 
-  const showWinner = (line) => {
+  const showWinner = (line, winner) => {
     if (line != undefined) {
       line.forEach(i => {
-        document.querySelector(`div[value="${i}"]`).classList.add("text-blue-500");
+        document.querySelector(`div[value="${i}"]`).classList.add(`text-${winner == "X" ? 'blue' : 'red'}-500`);
       });
     };
   };
@@ -69,7 +69,7 @@ const gameController = ( () => {
     };
    });
    
-   showWinner(winningLine);
+   showWinner(winningLine, winner);
    return winner;
   };
 
