@@ -1,6 +1,5 @@
 
 
-
 const gameBoard = ( () => {
   let board = ['','','','','','','','',''];
 
@@ -55,6 +54,16 @@ const gameController = ( () => {
 })();
 
 gameBoard.setSquare(0,'X');
+gameBoard.setSquare(2,'O');
 
 gameBoard.renderBoard();
 
+document.querySelectorAll('#sq').forEach(square => {
+  square.addEventListener('click', (e)=>{
+    let i = e.target.getAttribute('value');
+    if (e.target.textContent === "") {
+      gameBoard.setSquare(i, "X");
+      gameBoard.renderBoard();
+    }
+  });
+});
