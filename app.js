@@ -36,6 +36,16 @@ const Player = (name, piece) => {
 
 const gameController = ( () => {
   const winningPatterns = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,8], [2,5,8], [0,4,8], [2,4,6]];
+  let playerNow = "X";
+
+
+  const playerSwitch = () => {
+    if (playerNow === "X") {
+      playerNow = "O"
+    } else if (playerNow === "O") {
+      playerNow = "X"
+    };
+  };
 
   const checkWin = () => {
    let winner = false;
@@ -50,20 +60,19 @@ const gameController = ( () => {
    return winner;
   };
 
-  return {checkWin};
-})();
-
-gameBoard.setSquare(0,'X');
-gameBoard.setSquare(2,'O');
-
-gameBoard.renderBoard();
-
-document.querySelectorAll('#sq').forEach(square => {
-  square.addEventListener('click', (e)=>{
+  const addMark = (e) => {
     let i = e.target.getAttribute('value');
     if (e.target.textContent === "") {
-      gameBoard.setSquare(i, "X");
+      e.target.classList.remove("cursor-pointer");
+      gameBoard.setSquare(i, playerNow);
+      playerSwitch();
       gameBoard.renderBoard();
-    }
-  });
+    };
+  };
+
+  return {checkWin, addMark};
+})();
+
+document.querySelectorAll('#sq').forEach(square => {
+  square.addEventListener('click', gameController.addMark);
 });
