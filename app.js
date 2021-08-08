@@ -47,16 +47,29 @@ const gameController = ( () => {
     };
   };
 
+  const showWinner = (line) => {
+    if (line != undefined) {
+      line.forEach(i => {
+        document.querySelector(`div[value="${i}"]`).classList.add("text-blue-500");
+      });
+    };
+  };
+
   const checkWin = () => {
    let winner = false;
+   let winningLine;
    winningPatterns.forEach(pattern => {
     let line = gameBoard.getLine(pattern).join("");
     if (line === "XXX") {
       winner = "X";
+      winningLine = pattern;
     } else if (line === "OOO") {
       winner = "O";
-    }
+      winningLine = pattern;
+    };
    });
+   
+   showWinner(winningLine);
    return winner;
   };
 
@@ -67,6 +80,7 @@ const gameController = ( () => {
       gameBoard.setSquare(i, playerNow);
       playerSwitch();
       gameBoard.renderBoard();
+      checkWin();
     };
   };
 
