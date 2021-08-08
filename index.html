@@ -9,9 +9,15 @@
 </head>
 <body>
 
-  <h1 class="mt-2 text-4xl text-center font-bold">Tic Tac Toe</h1>
+  <h1 class=" text-4xl text-center font-bold">Tic Tac Toe</h1>
 
-  <div class="grid grid-cols-3 mt-5 bg-black mx-auto max-w-screen-sm gap-2 p-2 " id="board">
+    
+  <div class="flex justify-between max-w-6xl mx-auto ">
+    <div class="text-3xl font-light">Player 1: <span class="text-5xl font-semibold">X</span></div>
+    <div class="text-3xl font-light">Player 2: <span class="text-5xl font-semibold">O</span></div>
+  </div>
+
+  <div class="grid grid-cols-3 bg-black mx-auto max-w-screen-sm gap-2 p-2 flex-none" id="board">
     <div class="h-44 bg-gray-300 flex justify-center items-center font-extrabold text-9xl cursor-pointer" value="0" id="sq"></div>
     <div class="h-44 bg-gray-300 flex justify-center items-center font-extrabold text-9xl cursor-pointer" value="1" id="sq"></div>
     <div class="h-44 bg-gray-300 flex justify-center items-center font-extrabold text-9xl cursor-pointer" value="2" id="sq"></div>
@@ -21,9 +27,9 @@
     <div class="h-44 bg-gray-300 flex justify-center items-center font-extrabold text-9xl cursor-pointer" value="6" id="sq"></div>
     <div class="h-44 bg-gray-300 flex justify-center items-center font-extrabold text-9xl cursor-pointer" value="7" id="sq"></div>
     <div class="h-44 bg-gray-300 flex justify-center items-center font-extrabold text-9xl cursor-pointer" value="8" id="sq"></div>
-
   </div>
-  
+
+
   <script src="app.js"></script>
 </body>
 </html>
