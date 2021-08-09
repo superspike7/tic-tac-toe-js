@@ -37,7 +37,7 @@ const Player = (name, piece) => {
 const gameController = ( () => {
   const winningPatterns = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]];
   let playerNow = "X";
-
+  let turns = 0;
 
   const playerSwitch = () => {
     if (playerNow === "X") {
@@ -48,11 +48,17 @@ const gameController = ( () => {
   };
 
   const showWinner = (line, winner) => {
+    let roundOver = document.querySelector('#round-over');
+    let roundAnnounce = document.querySelector('#round-announce');
     if (line != undefined && winner) {
       line.forEach(i => {
         document.querySelector(`div[value="${i}"]`).classList.add(`text-${winner == "X" ? 'blue' : 'red'}-500`);
       });
-      document.querySelector('#round-over').classList.remove('hidden');
+      roundOver.classList.remove('hidden');
+      roundAnnounce.innerHTML = `Winner:  <span class="text-4xl font-bold text-${winner == "X" ? 'blue' : 'red'}-500">${winner}</span>`;
+    } else if (winner === "tie") {
+      roundOver.classList.remove('hidden');
+      roundAnnounce.textContent = "It's a Tie!";
     };
   };
 
@@ -67,10 +73,13 @@ const gameController = ( () => {
     } else if (line === "OOO") {
       winner = "O";
       winningLine = pattern;
+    } else if (turns > 7) {
+      winner = "tie";
     };
    });
    
    showWinner(winningLine, winner);
+   turns++;
    return winner;
   };
 
