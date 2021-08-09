@@ -20,7 +20,6 @@ const gameBoard = ( () => {
     });
   };
 
-
   return {board, setSquare, getSquare, getLine, renderBoard};
 })();
 
@@ -79,6 +78,7 @@ const gameController = ( () => {
    });
    
    showWinner(winningLine, winner);
+   winningLine = "";
    turns++;
    return winner;
   };
@@ -100,3 +100,5 @@ const gameController = ( () => {
 document.querySelectorAll('#sq').forEach(square => {
   square.addEventListener('click', gameController.addMark);
 });
+
+document.querySelector('#next-btn').addEventListener('click', () => {location.reload()});
