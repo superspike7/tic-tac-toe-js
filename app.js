@@ -48,10 +48,11 @@ const gameController = ( () => {
   };
 
   const showWinner = (line, winner) => {
-    if (line != undefined) {
+    if (line != undefined && winner) {
       line.forEach(i => {
         document.querySelector(`div[value="${i}"]`).classList.add(`text-${winner == "X" ? 'blue' : 'red'}-500`);
       });
+      document.querySelector('#round-over').classList.remove('hidden');
     };
   };
 
